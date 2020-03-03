@@ -3,7 +3,7 @@ library(rvest)
 library(stringr)
 library(purrr)
 
-source('utils.R')
+source('scripts/utils.R')
 #---- login ----
 
 lnk <- 'https://cei.b3.com.br'
