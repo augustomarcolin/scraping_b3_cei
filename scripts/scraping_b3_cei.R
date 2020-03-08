@@ -41,6 +41,14 @@ instituicoes <- read_html(pagina_dados) %>%
 
 #---- * tabela de compra e venda + preco medio ----
 
-db_cei <- map(instituicoes, ~read_table_cei(pagina_dados, .x)) 
+# as datas devem ser nesse formato %d/%m/%Y
+
+dt_ini <- '01/01/2019' 
+
+dt_fim <- '31/12/2019'
+
+
+db_cei <- map(instituicoes, ~read_table_cei(pagina_dados, .x, dt_ini, dt_fim)) %>% 
+  set_names(instituicoes)
 
 
