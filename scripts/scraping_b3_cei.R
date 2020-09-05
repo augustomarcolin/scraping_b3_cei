@@ -48,7 +48,7 @@ dt_ini <- '01/01/2019'
 dt_fim <- '31/12/2019'
 
 
-db_cei <- map(instituicoes, ~read_table_cei(pagina_dados, .x, dt_ini, dt_fim)) %>% 
+db_cei <- map(instituicoes,
+              possibly(~read_table_cei(pagina_dados, .x, dt_ini, dt_fim), otherwise = NULL)) %>% 
   set_names(instituicoes)
-
 

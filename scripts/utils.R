@@ -8,13 +8,15 @@ read_table_cei <- function(session, instituicao, dt_ini, dt_fim){
   
   # ---- check data inicial ----
   
-  dt_minimo <- as.Date(form_dados[[1]]$fields$`ctl00$ContentPlaceHolder1$txtDataDeBolsa`$value, format = '%d/%m/%Y')
+  dt_minimo <- form_dados[[1]]$fields$`ctl00$ContentPlaceHolder1$txtDataDeBolsa`$value
+  
+  dt_minimo_format <- as.Date(dt_minimo, format = '%d/%m/%Y')
   
   dt_ini_format <- as.Date(dt_ini, format = '%d/%m/%Y')
   
-  if(dt_minimo > dt_ini_format)
+  if(dt_minimo_format > dt_ini_format)
   {
-    stop("Não é possível consultar a partir dessa data")
+    dt_ini <- dt_minimo
   }
   
   # ---- form da consulta ----
